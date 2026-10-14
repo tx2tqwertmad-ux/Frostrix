@@ -1,0 +1,22 @@
+{
+  "name": "Сайт сервера",
+  "short_name": "Сервер",
+  "description": "Официальный сайт и форум Minecraft-сервера",
+  "lang": "ru",
+  "start_url": "./index.html#/home",
+  "scope": "./",
+  "id": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fffdf5",
+  "theme_color": "#f5b301",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Идеи", "url": "./index.html#/ideas", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Команда", "url": "./index.html#/team", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Главная</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#f5b301">
+  <link rel="icon" type="image/png" href="icons/favicon-64.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <script>
+    /* ловим предложение установки приложения до загрузки остального */
+    window.__pwa = { prompt: null };
+    addEventListener('beforeinstallprompt', e => { e.preventDefault(); __pwa.prompt = e; document.dispatchEvent(new Event('pwa-ready')); });
+    addEventListener('appinstalled', () => { __pwa.prompt = null; document.dispatchEvent(new Event('pwa-installed')); });
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  </script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" href="#/home" aria-label="На главную">
+        <span class="logo-mark" id="logoMark">❄</span>
+        <span class="logo-text" id="logoText"></span>
+      </a>
+      <nav class="nav" id="nav"></nav>
+      <button class="btn btn-primary btn-sm hdr-ip" id="hIp" type="button">IP сервера</button>
+      <div class="header-user" id="headerUser"></div>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="app"></main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div><b>Официальное сообщество <span id="footName"></span></b><div class="muted">© 2026 Все права защищены. Сервер не аффилирован с Mojang AB.</div></div>
+      <div class="footer-links">
+        <a href="#" data-legal="terms">Пользовательское соглашение</a>
+        <a href="#" data-legal="privacy">Политика конфиденциальности</a>
+        <a href="#" data-legal="media">Условия медиа-программы</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal-root"></div>
+  <div id="modal-root2"></div>
+  <div id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
